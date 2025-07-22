@@ -9,3 +9,5 @@ const UserSchema = new mongoose.Schema({
     ownedMap:[{type:mongoose.Schema.Types.ObjectId, ref:'Map'}],
     recentRooms: [{ type: mongoose.Schema.Types.ObjectId, ref: "Room" }]
 })
+
+module.exports = mongoose.model("User", UserSchema);
