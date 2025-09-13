@@ -1,7 +1,7 @@
 const Sprint = require("../models/Sprint");
 const Task = require("../models/Task");
 
-//create 
+
 exports.createSprint = async (req,res)=>{
     try{
         const {name, startDate, endDate} = req.body;
@@ -20,7 +20,7 @@ exports.createSprint = async (req,res)=>{
     };
 };
 
-//update
+
 exports.updateSprint = async (req, res)=>{
     try{
         const {sprintId} = req.params;
@@ -39,7 +39,7 @@ exports.updateSprint = async (req, res)=>{
     };
 };
 
-//delete
+
 exports.deleteSprint = async (req, res)=>{
     try{
         const {sprintId} = req.params;
@@ -53,7 +53,7 @@ exports.deleteSprint = async (req, res)=>{
     };
 };
 
-//get all
+
 exports.getAllSprints = async (req,res)=>{
     try{
         const sprints = await Sprint.find()
@@ -66,7 +66,7 @@ exports.getAllSprints = async (req,res)=>{
     };
 };
 
-//get by id
+
 exports.getSprintById = async (req,res)=>{
     try{
         const {sprintId} = req.params;
