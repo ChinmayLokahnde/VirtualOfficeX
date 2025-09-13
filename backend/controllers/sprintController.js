@@ -1,6 +1,7 @@
 const Sprint = require("../models/Sprint");
 const Task = require("../models/Task");
 
+//create 
 exports.createSprint = async (req,res)=>{
     try{
         const {name, startDate, endDate} = req.body;
@@ -19,6 +20,7 @@ exports.createSprint = async (req,res)=>{
     };
 };
 
+//update
 exports.updateSprint = async (req, res)=>{
     try{
         const {sprintId} = req.params;
@@ -37,6 +39,7 @@ exports.updateSprint = async (req, res)=>{
     };
 };
 
+//delete
 exports.deleteSprint = async (req, res)=>{
     try{
         const {sprintId} = req.params;
@@ -50,10 +53,36 @@ exports.deleteSprint = async (req, res)=>{
     };
 };
 
+//get all
 exports.getAllSprints = async (req,res)=>{
     try{
+        const sprints = await Sprint.find()
+        .populate("createdBy", "username email")
+        .populate("task");
 
+        res.status(200).json(sprints);
     }catch(err){
-        
+        res.status(500).json({msg: "Error fetching data", err:err.msg})  
+    };
+};
+
+//get by id
+exports.getSprintById = async (req,res)=>{
+    try{
+        const {sprintId} = req.params;
+
+        const sprint = await Sprint.findById(sprintId)
+        .populate("createdBy", "username email")
+        .populate({
+            path: "task",
+            populate: {path: "assigned createdBy", select: "username email"},
+        });
+        if(!sprint) return res.status(404).json({msg: "Sprint not found"});
+
+        res.status(200).json(sprint)
+    }catch(err){
+        res.status(500).json({msg: "Error fetching sprint", err:err.msg});
     }
-}
+};
+
+

@@ -2,6 +2,7 @@ const Room = require("../models/Room");
 const User = require("../models/User.js");
 const Map = require("../models/map.js");
 
+//create room 
 exports.createRoom = async (req, res) => {
   try {
     const { mapId } = req.body;
@@ -25,6 +26,8 @@ exports.createRoom = async (req, res) => {
   }
 };
 
+
+//join room
 exports.joinRoom = async (req, res) => {
   try {
     const { roomId } = req.params;
@@ -45,6 +48,8 @@ exports.joinRoom = async (req, res) => {
   }
 };
 
+
+//leave room
 exports.leaveRoom = async (req, res) => {
   try {
     const { roomId } = req.params;
@@ -62,6 +67,8 @@ exports.leaveRoom = async (req, res) => {
   }
 };
 
+
+//end room
 exports.endRoom = async (req, res) => {
   try {
     const { roomId } = req.params;
@@ -84,6 +91,8 @@ exports.endRoom = async (req, res) => {
   }
 };
 
+
+//get details
 exports.getRoomDetails = async (req, res) => {
   try {
     const { roomId } = req.params;

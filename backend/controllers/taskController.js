@@ -2,6 +2,7 @@ const Task = require ("../models/Task");
 const Sprint = require("../models/Sprint");
 const User = require("../models/User");
 
+//create task
 exports.createTask = async (req,res)=>{
     try{
         const {title, description, lables, assignedTo, sprintId} = req.body;
@@ -27,6 +28,7 @@ exports.createTask = async (req,res)=>{
     };
 };
 
+//update
 exports.updateTask = async(req,res)=>{
     try{
         const {taskId} = req.params;
@@ -45,6 +47,8 @@ exports.updateTask = async(req,res)=>{
     };
 };
 
+
+//delete task
 exports.deleteTask = async (req,res)=>{
     try{
         const {taskId} = req.params;
@@ -59,6 +63,7 @@ exports.deleteTask = async (req,res)=>{
     };
 };
 
+//get task by sprint
 exports.getTaskBySprint = async (req,res)=>{
     try{
         const {sprintId} = req.params;
@@ -73,6 +78,7 @@ exports.getTaskBySprint = async (req,res)=>{
     };
 };
 
+//details
 exports.getTaskDetails = async (req,res)=>{
     try{
         const {taskId} = req.params;
@@ -90,6 +96,7 @@ exports.getTaskDetails = async (req,res)=>{
     };
 };
 
+//add comments
 exports.addComments = async (req,res)=>{
     try{
         const {taskId} = req.params;
