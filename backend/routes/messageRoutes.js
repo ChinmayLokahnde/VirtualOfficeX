@@ -1,6 +1,6 @@
 const express = require('express');
-import { sendMessage, getAllMessage, deleteMessage } from '../controllers/messageController';
-import authMiddleware from '../middleware/authMiddleware';
+const { sendMessage, getAllMessage, deleteMessage } = require ('../controllers/messageController');
+const authMiddleware = require ('../middleware/authMiddleware');
 
 const router = express.Router();
 

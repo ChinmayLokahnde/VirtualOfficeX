@@ -1,6 +1,6 @@
 const express = require ('express');
-import { createRoom, joinRoom, leaveRoom, endRoom, getRoomDetails} from '../controllers/roomController';
-import authMiddleware from '../middleware/authMiddleware';
+const { createRoom, joinRoom, leaveRoom, endRoom, getRoomDetails} = require ('../controllers/roomController');
+const authMiddleware = require ('../middleware/authMiddleware');
 
 const router = express.Router();
 

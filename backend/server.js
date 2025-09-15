@@ -3,12 +3,12 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
-import authRoutes from "./routes/authRoutes";
-import mapRoutes from "./routes/mapRoutes";
-import messageRoutes from "./routes/messageRoutes";
-import roomRoutes from "./routes/roomRoutes";
-import sprintRoutes from "./routes/sprintRoutes";
-import taskRoutes from "./routes/taskRoutes";
+const authRoutes = require ("./routes/authRoutes");
+const  mapRoutes = require ("./routes/mapRoutes");
+const messageRoutes = require ("./routes/messageRoutes");
+const roomRoutes = require ("./routes/roomRoutes");
+const sprintRoutes = require ("./routes/sprintRoutes");
+const taskRoutes = require ("./routes/taskRoutes");
 
 dotenv.config();
 const app = express();

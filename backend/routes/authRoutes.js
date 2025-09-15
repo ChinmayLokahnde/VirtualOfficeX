@@ -1,6 +1,6 @@
 const express = require('express');
-import {registerUser, loginUser, getMe} from "../controllers/authController";
-import authMiddleware from "../middleware/authMiddleware";
+const {registerUser, loginUser, getMe} = require ("../controllers/authController");
+const authMiddleware = require ("../middleware/authMiddleware");
 
 const router = express.Router();
 

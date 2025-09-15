@@ -1,6 +1,6 @@
 const express = require('express');
-import { createMap, getMyMaps, getMapById, getPublicMaps, updateMap, deleteMap } from '../controllers/mapController';
-import authMiddleware from '../middleware/authMiddleware';
+const { createMap, getMyMaps, getMapById, getPublicMaps, updateMap, deleteMap } = require ('../controllers/mapController');
+const authMiddleware = require ('../middleware/authMiddleware');
 
 const router = express.Router();
 

@@ -1,6 +1,6 @@
 const express = require ('express');
-import { createSprint, updateSprint, getAllSprints, deleteSprint, getSprintById, } from '../controllers/sprintController';
-import authMiddleware from '../middleware/authMiddleware';
+const { createSprint, updateSprint, getAllSprints, deleteSprint, getSprintById, } = require ('../controllers/sprintController');
+const authMiddleware = require ('../middleware/authMiddleware');
 
 const router = express.Router();
 
