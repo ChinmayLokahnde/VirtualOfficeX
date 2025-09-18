@@ -10,4 +10,4 @@ router.post("/:roomId/leave", authMiddleware, leaveRoom);
 router.post("/:roomId/end", authMiddleware, endRoom)
 router.get("/:roomId", getRoomDetails);
 
-export default router;
+module.exports = router;

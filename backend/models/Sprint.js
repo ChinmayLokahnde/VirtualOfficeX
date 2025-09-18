@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require ("mongoose");
 
 const SprintSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -9,4 +9,4 @@ const SprintSchema = new mongoose.Schema({
   isActive: { type: Boolean, default: true },
 }, { timestamps: true });
 
-export default mongoose.model('Sprint', SprintSchema);
+module.expports = mongoose.model('Sprint', SprintSchema);

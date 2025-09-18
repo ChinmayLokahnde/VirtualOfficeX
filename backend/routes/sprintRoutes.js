@@ -10,5 +10,5 @@ router.get("/", authMiddleware, getAllSprints);
 router.put("/:id", authMiddleware, updateSprint);
 router.delete("/:id", authMiddleware, deleteSprint);
 
-export default router;
+module.exports = router;
 

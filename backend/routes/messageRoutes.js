@@ -8,4 +8,4 @@ router.post("/:roomId", authMiddleware, sendMessage);
 router.get("/:roomId", authMiddleware, getAllMessage);
 router.delete("/:roomId", authMiddleware, deleteMessage);
 
-export default router;
+module.exports = router;

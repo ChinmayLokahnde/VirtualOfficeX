@@ -1,5 +1,5 @@
-const map = require("../models/map");
-const Map = require ("../models/map");
+//import map from "../models/map.";
+const { find, findById } = require("../models/map.js");
 
 exports.createMap = async (req,res) =>{
     try{
@@ -18,29 +18,29 @@ exports.createMap = async (req,res) =>{
     }catch(error){
         res.status(500).json({Message:"Error in creating map", error:error.Message})
     };
-};
+}
 
-exports.getPublicMaps = async (req,res)=>{
+exports.getPublicMaps = async(req,res)=>{
     try{
-        const maps = await Map.find({isPublic:true}).populate("owner", "username email");
+        const maps = await find({isPublic:true}).populate("owner", "username email");
         res.json(maps)
     }catch(error){
         res.status(500).json({Message: "error in fetching maps", error: error.Message})
     };
-};
+}
 
 exports.getMyMaps = async(req,res)=>{
     try{
-        const maps = await Map.find({owner: req.user.id})
+        const maps = await find({owner: req.user.id})
         res.json(maps)
     }catch (error){
         res.status(500).json({msg: "error in fetching your map something is up with this backend badboy", error: error.msg})
     };
-};
+}
 
-exports.getMapById = async (req,res)=>{
+exports.getMapById = async(req,res)=>{
     try{
-        const map = await Map.findById(req.params.id).populate("owner", "username email")
+        const map = await findById(req.params.id).populate("owner", "username email")
         if(!map) return res.status(404).json({msg: "your map not found "});
 
         if(!map.isPublic && map.owner._id.toString() !==req.user.id){
@@ -50,11 +50,11 @@ exports.getMapById = async (req,res)=>{
     }catch(err){
         res.status(500).json({msg: "server error while fetchig map", err: err.msg})
     };
-};
+}
 
 exports.updateMap = async(req,res)=>{
     try{
-        const map = await Map.findById(req.params.id)
+        const map = await findById(req.params.id)
         if(!map) return res.status(404).json({msg:"Map not Found"});
 
         if(map.owner.toString() !==req.user.id){
@@ -69,11 +69,11 @@ exports.updateMap = async(req,res)=>{
     }catch(err){
         res.status(500).json({msg: "error while updateing map", err:err.msg})
     };
-};
+}
 
 exports.deleteMap = async(req,res)=>{
     try{
-        const map = await Map.findById(req.params.id);
+        const map = await findById(req.params.id);
         if(!map) return res.status(404).json({msg:"Map not Found"});
         
         if(map.owner.toString() !==req.user.id){
@@ -86,6 +86,6 @@ exports.deleteMap = async(req,res)=>{
     } catch(err){
         res.status(500).json({msg: "error while deleting map", err:err.msg})
     };
-};
+}
 
 

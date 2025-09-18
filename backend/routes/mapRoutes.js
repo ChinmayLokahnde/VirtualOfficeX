@@ -11,4 +11,4 @@ router.get("/:id", getMapById);
 router.put("/:id", authMiddleware, updateMap);
 router.delete("/:id", authMiddleware, deleteMap);
 
-export default router;
+module.exports = router;

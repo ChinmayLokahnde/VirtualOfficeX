@@ -8,4 +8,4 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.get("/profile", authMiddleware, getMe);
 
-export default router;
+module.exports = router;

@@ -1,9 +1,9 @@
-import User from "../models/User.js";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+const User = require("../models/User.js");
+const bcrypt = require ("bcryptjs");
+const jwt = require ("jsonwebtoken");
 
 
-export const registerUser = async (req, res) => {
+exports.registerUser = async (req, res) => {
   try {
     const { username, email, password, role } = req.body;
 
@@ -31,7 +31,7 @@ export const registerUser = async (req, res) => {
 };
 
 
-export const loginUser = async (req, res) => {
+exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -51,11 +51,10 @@ export const loginUser = async (req, res) => {
 };
 
 
-export const getMe = async (req, res) => {
+exports.getMe = async (req, res) => {
   try {
-    const user = await User.findById(req.userId).select("-password");
-    if (!user) return res.status(404).json({ msg: "User not found" });
-    res.json(user);
+    if (!req.user) return res.status(404).json({ msg: "User not found" });
+    res.json(req.user);
   } catch (err) {
     res.status(500).json({ msg: "Unauthorized" });
   }
