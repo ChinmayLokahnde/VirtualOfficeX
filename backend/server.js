@@ -2,7 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-
+const http = require("http");
+const initSocket = require('./socket');
 
 const authRoutes = require("./routes/authRoutes");
 const mapRoutes = require("./routes/mapRoutes");
@@ -24,12 +25,18 @@ app.use("/api/rooms", roomRoutes);
 app.use("/api/sprints", sprintRoutes);
 app.use("/api/tasks", taskRoutes);
 
+const httpServer = http.createServer(app);
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     const PORT = process.env.PORT || 4000;
-    app.listen(PORT, () => {
-      console.log(` Server is running on port ${PORT}`);
+
+    
+    initSocket(httpServer);
+
+    httpServer.listen(PORT, () => {
+      console.log(` Server running on port ${PORT}`);
       console.log(" MongoDB connected successfully");
     });
   })
